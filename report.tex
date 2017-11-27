@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\title{Machine Learning and Algorithms for Data Mining \\
+Assessment 1 \\
+\textit{Computing Communities in Large Networks Using Random Walks}}
+\author{Sebastian Borgeaud --- spb61@cam.ac.uk}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	afdasflj	
+\end{abstract}
+
+\section{Main contributions, Key Concepts and Ideas}
+The paper presents a clustering method for large undirected graphs based on random walks. The paper is based upon the idea that before a random walk converges to the stationary distribution, it should spend more time travelling inside clusters than moving between clusters, for a suitable definition of clusters. In fact, we can use this to create clusters.
+
+\subsection{Random walks on graphs}
+More formally, consider an undirected graph $G=(V,E)$ where $V$ are the vertices and $E$ are the edges of $G$. Let $n = |V|$ and $m = |E|$. This graph has an \textbf{adjacency matrix} $A$, given by
+\[ 
+A_{i,j} = 
+\begin{cases}
+	1, 	&\textnormal{ if $(i,j) \in E$},\\
+	0	&\textnormal{otherwise}\\
+\end{cases}
+\]
+
+The paper makes two assumptions about the undirected graphs we work with:
+\begin{enumerate}
+	\item Every node in the graph is connected to itself.
+	\item The graph is connected, that is we can reach any node from any starting node.
+\end{enumerate}
+
+We can define a random walk on this graph using the \textbf{transition matrix} $P$, given by:
+\begin{equation}
+	P_{i,j} = \frac{A_{i,j}}{d(i)}
+\end{equation}
+where $d(i) = \Sigma_j A_{i,j}$ denotes the \textbf{degree} of node $i$. This means that if at time $t$ the random walker is at node $i$, it will move with probability $P_{i,j}$ to node $j$, i.e.\ move to a neighbour with uniform probability.
+
+\subsection{Distance between vertices and distance between clusters}
+For a random walk of length $t$, the probability of starting at node $i$ and ending at node $j$ is given by $P_{i,j}^t$. If $t$ is large enough to gather some information about the structure of the graph, but not too large as to make $P_{i,j}^t$ converge to the stationary distribution, $P_{i,j}^t$ can be used to define a notion of distance between two nodes of the graph, as it has the following desirable properties:
+\begin{enumerate}
+	\item If two vertices $i$ and $j$ are in the same cluster, then $P_{i,j}^t$ should be high.
+	\item The probability of $P_{i,j}^t$ is influenced by $d(j)$ as the walker is more likely to go to high degree vertices.
+	\item A random walk starting from a vertex $i$ or $j$ of the same cluster, should end in vertex $k$ with similar probability. That is for every vertex $k$, $P_{i,k}^t$  and $P_{j,k}^t$ should be similar.
+\end{enumerate}
+We can now define the distance between two vertices $i$ and $j$:
+\begin{definition}
+	We can now define the distance between two vertices $i$ and $j$:
+	\[ r_{i,j} = \sqrt{\sum_{k=1}^n \frac{(P_{i,k}^t - P_{j,k}^t)^2}{d(k)}} \]
+\end{definition}
+Note this is really an euclidian distance:
+\[ r_{i,j} = \|D^{-\frac{1}{2}}P_{i,\bullet}^t - D^{-\frac{1}{2}}P_{j,\bullet}^t \|\]
+where $D_{i,j} = \delta_{i,j} \cdot d(i)$ is the diagonal matrix of the degrees of the vertices in $G$ and $P_{i,\bullet}^t$ is the column vector containing probabilities $(P_{i,k}^t)_{1 \le k \le n}$.
+Next, we can generalise this notion of distance to clusters.
+\begin{definition}
+	Let $C_1, C_2 \subset V$ be two clusters in $G$. The distance $r_{C_1,C_2}$ is defined to be:
+	\[ r_{C_1,C_2} = \sqrt{\sum_{k=1}^n \frac{(P_{C_1,k}^t - P_{C_2,k}^t)^2}{d(k)}} \]
+\end{definition}
+where the probability $P_{C,k}^t$ to go from cluster $C$ to vertex $k$ in $t$ steps is defined to be
+\[ P_{C,k}^t = \frac{1}{|C|}\sum_{i \in C}P_{i,k}^t\]
+Again, this is really an euclidean distance as 
+\[  r_{C_1,C_2} = \|D^{-\frac{1}{2}}P_{C_1,\bullet}^t - D^{-\frac{1}{2}}P_{C_2,\bullet}^t \|\]
+
+\subsection{Clustering algorithm}
+The distance introduced earlier can be used in a hierarchical clustering algorithm. First, we initialise the initial partition of the graph into $n$ clusters, one per vertex: $\mathcal{P}_1 = \{\{v\} \mid v \in V\}$. Then the algorithm repeatedly merges clusters until only a single cluster is left, by repeating at each step $k$:
+\begin{enumerate}
+	\item Choose two closest clusters $C_1$ and $C_2$ to merge.
+	\item Merge $C_1$ and $C_2$.
+	\item Update the distances between $C_3$ and its adjacent clusters.
+	\item Create a new partition $\mathcal{P}_{k+1} = (\mathcal{P} \setminus \{C_1, C_2\}) \cup C_3$
+\end{enumerate}
+\subsubsection{Choosing two clusters to merge}
+In order to reduce the complexity and to guarantee that every cluster is connected, that is any node in a cluster can be reached from every other node in the cluster without leaving the cluster, only adjacent clusters are considered for merging.
+
+The two clusters are then chosen to be those that, when merged, minimise 
+\[\sigma_k = \frac{1}{n} \sum_{C \in \mathcal{P}_k} \sum_{i \in C} r_{i,C}^2\]
+This is usually a NP-hard problem. However, for our definition of $r_{i,C}$, we can compute the variation $\Delta\sigma(C_1,C_2)$ that would be induced by merging $C_1$ with $C_2$, where
+\[\Delta\sigma(C_1,C_2) = \frac{1}{n} \big( \sum_{i \in C_3} r_{i,C_3}^2 - \sum_{i \in C_1} r_{i,C_1}^2 - \sum_{i \in C_2} r_{i,C_2}^2 \big)\]
+One can show that $\Delta\sigma(C_1,C_2)$ is related to $r_{C_1, C_2}$ by:
+\begin{equation}
+	\label{eq_theorem3}
+	\Delta\sigma(C_1,C_2) = \frac{1}{n}\frac{|C_1||C_2|}{|C_1| + |C_2|} r_{C_1,C_2}^2 
+\end{equation}
+which allows for a more efficient computation.
+\subsubsection{Merging the clusters}
+This step is straightforward as the new cluster $C_3$ consists of the nodes in $C_1$ and $C_2$:
+\[ C_3 = C_1 \cup C_2 \]
+The updated probability vector $P_{C_3,\bullet}^t$ is computed using $P_{C_1,\bullet}^t$ and $P_{C_2,\bullet}^t$:
+\[P_{C_3,\bullet}^t = \frac{C_1 P_{C_1,\bullet}^t + |C_2| P_{C_2,\bullet}^t}{|C_1| + |C_2|}\]
+\subsubsection{Updating the distances}
+Next, we need to compute the updated variation $\Delta\sigma(C_3, C)$ for every other cluster C. There are two cases to consider:
+\begin{enumerate}
+	\item If $C$ is adjacent to both $C_1$ and $C_2$, then we already have the values of $\Delta\sigma(C_1, C)$ and $\Delta\sigma(C_2, C)$. It is then possible to compute $\Delta\sigma(C_3, C)$ in constant time using:
+	\[\Delta\sigma(C_3, C) = \frac{(|C_1| + |C|) \Delta\sigma(C_1,C) + (|C_2| + |C|) \Delta\sigma(C_2,C) + |C| \Delta\sigma(C_1,C_2)}{|C_1| + |C_1| + |C|}\]
+	\item If $C$ is adjacent to only $C_1$ or $C_2$, we have to compute $\Delta\sigma(C_3, C)$ using equation \ref{eq_theorem3}, that is
+	\[ \Delta\sigma(C_3,C) = \frac{1}{n}\frac{|C_3||C|}{|C_3| + |C|} r_{C_3,C}^2 \]
+\end{enumerate}
+
+\subsection{Evaluating the partitions}
+The final step of the algorithm is to choose the partition $\mathcal{P}_k$ that best captures the notion of community for our graph. The paper presents two methods for this:
+\begin{enumerate}
+	\item Choose the partition $\mathcal{P}$ that maximises the modularity $Q$, defined as
+	\[ Q(\mathcal{P}) = \sum	_{C \in \mathcal{P}} e_C - a_C^2\] 
+	where $e_C$ is the fraction of edges inside cluster $C$ and $a_C$ is the fraction of edges bound to cluster $C$.
+	\item An alternative is to use the partition $\mathcal{P}$ associated with the largest value of the increase ratio
+	\[ \eta_k = \frac{\Delta\sigma_k}{\Delta\sigma_{k-1}}\].
+	This relies on the idea that if we merge two clusters that are very different in step $k$, then $\Delta\sigma_k$ will be large and thus, if $\Delta\sigma_k$ is large, then the clusters at step $k-1$ must be relevant.
+\end{enumerate}
+
+\subsection{Complexity}
+
+\section{Implementation}
+\section{Results \& analysis}
+\end{document}
