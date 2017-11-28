@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{pons2005computing}
+Pascal Pons and Matthieu Latapy.
+\newblock Computing communities in large networks using random walks.
+\newblock In {\em ISCIS}, volume 3733, pages 284--293, 2005.
+
+\bibitem{zachary1977information}
+Wayne~W Zachary.
+\newblock An information flow model for conflict and fission in small groups.
+\newblock {\em Journal of anthropological research}, 33(4):452--473, 1977.
+
+\bibitem{girvan2002community}
+Michelle Girvan and Mark~EJ Newman.
+\newblock Community structure in social and biological networks.
+\newblock {\em Proceedings of the national academy of sciences},
+  99(12):7821--7826, 2002.
+
+\end{thebibliography}

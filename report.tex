@@ -15,8 +15,8 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 
-\title{Machine Learning and Algorithms for Data Mining \\
-Assessment 1 \\
+\title{{\small{Machine Learning and Algorithms for Data Mining} \\
+Assessment 1:} \\
 \textit{Computing Communities in Large Networks Using Random Walks}}
 \author{Sebastian Borgeaud --- spb61@cam.ac.uk}
 
@@ -24,8 +24,8 @@ Assessment 1 \\
 \maketitle
 
 \begin{abstract}
-	afdasflj	
-\end{abstract}
+	In this report, I first report the key ideas and concepts introduced in ``Computing Communities in Large Networks Using Random Walks'' \cite{pons2005computing}. Next, I present my Python implementation of the algorithm. Finally, I compare the results produced by my algorithm with those reported in \cite{pons2005computing} and evaluate my algorithms on multiple real world test networks.
+	\end{abstract}
 
 \section{Main contributions, Key Concepts and Ideas}
 The paper presents a clustering method for large undirected graphs based on random walks. The paper is based upon the idea that before a random walk converges to the stationary distribution, it should spend more time travelling inside clusters than moving between clusters, for a suitable definition of clusters. In fact, we can use this to create clusters.
@@ -133,7 +133,7 @@ The final step of the algorithm is to choose the partition $\mathcal{P}_k$ that 
 	This relies on the idea that if we merge two clusters that are very different in step $k$, then $\Delta\sigma_k$ will be large and thus, if $\Delta\sigma_k$ is large, then the clusters at step $k-1$ must be relevant.
 \end{enumerate}
 
-\subsection{Complexity}
+%\subsection{Complexity}
 
 \section{Implementation}
 I implemented this algorithm in Python, making use of \texttt{numpy} to handle the computations over the matrices and vectors.
@@ -280,6 +280,8 @@ while(len(clusters) > 1):
 \end{lstlisting}
 
 \section{Results \& analysis}
+
+
 \subsection{Example graph from the paper}
 To check that my implementation matches the one given in the paper, I reuse the simple toy network consisting of 16 nodes (see figure \ref{fig_toy_graph}) given on page 11 of the paper.
 \begin{figure}
@@ -296,7 +298,6 @@ Running my implementation on this graph gives the dendogram shown in figure \ref
 	\caption{Dendogram resulting from runnign my implementation of the clustering algorithm on the simple toy graph. The resulting dendogram matches the one given in the paper.}
 	\label{fig_toy_graph_dendogram}
 \end{figure}
-
 \begin{figure}
 	\includegraphics[scale=0.44]{toy_graph_Q}
 	\includegraphics[scale=0.44]{toy_graph_eta}
@@ -305,6 +306,64 @@ Running my implementation on this graph gives the dendogram shown in figure \ref
 	\label{fig_toy_graph_eval}
 \end{figure}
 
+%\begin{figure}
+%	\includegraphics[scale=0.44]{toy_graph_Q}
+%	\includegraphics[scale=0.44]{toy_graph_eta}
+%	\centering
+%	\caption{Modularity and increase ratios for the toy example graph given in the paper. The curves match those given in the paper.}
+%	\label{fig_toy_graph_eval}
+%\end{figure}
+
 Finally, using the partition into two clusters as suggested by both the modularity and the increase ratios, we can recover the same partition as the one given in the paper, i.e.\ the partition into the two clusters denoted by green and red nodes in figure \ref{fig_toy_graph}.
+
+\subsection{Test on randomly generated graph}
+Testing a graph clustering algorithm is a hard task as we need to evaluate the resulting partition. A common way to do this is to use randomly generated graphs for which the partition is already known.
+
+\subsection{Zachary's karate club \cite{zachary1977information}}
+The next graph I use to test my implementation of the algorithm is the Zachary's karate club network, drawn in figure \ref{fig_karate_graph}. The graph represents the friendship of the 34 members of a karate club. The club then split into two groups as a result of a dispute, the members of each group starting their own club. The question we can now ask is if our algorithm is able to recover these two groups.
+\begin{figure}[h]
+	\includegraphics[scale=0.5]{karate_graph}
+	\centering
+	\caption{Zachary's karate club network.}
+	\label{fig_karate_graph}
+\end{figure}
+Running the algorithm on this graphs, gives the dendogram given in figure \ref{fig_karate_graph_dendogram}.
+\begin{figure}
+	\includegraphics[scale=0.5]{karate_dendogram}
+	\centering
+	\caption{Dendogram resulting from using our algorithm on Zachary's karate club network.}
+	\label{fig_karate_graph_dendogram}
+\end{figure}
+
+Analysing the partitions using modularity and the increase ratio (figure \ref{fig_karate_eval}), we can see that the algorithm suggests a partition into either 2 or 4 clusters. These partitions are shown in figure \ref{fig_toy_graph_partitions}. For the partition into two clusters every node has been assigned the correct cluster except for node 8.
+
+\begin{figure}
+	\includegraphics[scale=0.44]{karate_graph_Q}
+	\includegraphics[scale=0.44]{karate_graph_eta}
+	\centering
+	\caption{Modularity and increase ratios for the Karate Club network. The modularity suggests a partition into 4 clusters. The increase ration suggests a partition into 2 clusters, as we can disregard clustering the network into more than 10 clusters.}
+	\label{fig_karate_eval}
+\end{figure}
+\begin{figure}
+	\includegraphics[scale=0.44]{karate_graph_partition2}
+	\includegraphics[scale=0.44]{karate_graph_partition4}
+	\centering
+	\caption{Partition into 2 and 4 clusters given by our algorithm for the Zachary's karate club network. For the partition into 2 clusters, every node has been assigned the correct cluster, except node 8.}
+	\label{fig_toy_graph_partitions}
+\end{figure}
+
+\subsection{American college football \cite{girvan2002community}}
+Next, I test the algorithm on the American College Football network \cite{girvan2002community}. The graph consists of 155 nodes, each node being assigned into one of 12 conferences. The question to ask is whether my implementation of the algorithm can recover this partitioning into the 12 conferences. The modularities and the increase ratios obtained are shown in figure \ref{fig_football_eval}.
+\begin{figure}
+	\includegraphics[scale=0.44]{football_graph_Q}
+	\includegraphics[scale=0.44]{football_graph_eta}
+	\centering
+	\caption{Modularity and increase ratios for the American College Football network. The modularity is maximised at a partition into 12 clusters, with a value of 0.6. The increase ration suggests a partition into 10 clusters.}
+	\label{fig_football_eval}
+\end{figure}
+The modularity is maximised at a partition into 12 clusters, with a value of 0.6. Indeed, using the generated partition for 12 clusters, the algorithm is able to approximately recover the 12 conferences, with only 10 nodes being misclassified. 
+\bibliography{bib}
+\bibliographystyle{unsrt}
+
 
 \end{document}

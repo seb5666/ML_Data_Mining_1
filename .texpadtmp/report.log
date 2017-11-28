@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.11)  28 NOV 2017 16:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.11)  28 NOV 2017 17:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -236,44 +236,88 @@ Missing character: There is no Î in font cmtt12!
 Missing character: There is no ” in font cmtt12!
 Missing character: There is no Ï in font cmtt12!
 Missing character: There is no ƒ in font cmtt12!
- <plots/toy_graph.png, id=49, 433.62pt x 289.08pt>
+ <plots/toy_graph.png, id=48, 433.62pt x 289.08pt>
 File: plots/toy_graph.png Graphic file (type png)
  <use plots/toy_graph.png>
-Package pdftex.def Info: plots/toy_graph.png used on input line 286.
+Package pdftex.def Info: plots/toy_graph.png used on input line 288.
 (pdftex.def)             Requested size: 260.17401pt x 173.44933pt.
- <plots/toy_graph_dendogram.png, id=51, 433.62pt x 289.08pt>
+ <plots/toy_graph_dendogram.png, id=50, 433.62pt x 289.08pt>
 File: plots/toy_graph_dendogram.png Graphic file (type png)
  <use plots/toy_graph_dendogram.png>
-Package pdftex.def Info: plots/toy_graph_dendogram.png used on input line 294.
+Package pdftex.def Info: plots/toy_graph_dendogram.png used on input line 296.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
- <plots/toy_graph_Q.png, id=52, 433.62pt x 289.08pt>
+ <plots/toy_graph_Q.png, id=51, 433.62pt x 289.08pt>
 File: plots/toy_graph_Q.png Graphic file (type png)
  <use plots/toy_graph_Q.png>
-Package pdftex.def Info: plots/toy_graph_Q.png used on input line 301.
+Package pdftex.def Info: plots/toy_graph_Q.png used on input line 302.
 (pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- <plots/toy_graph_eta.png, id=53, 433.62pt x 289.08pt>
+ <plots/toy_graph_eta.png, id=52, 433.62pt x 289.08pt>
 File: plots/toy_graph_eta.png Graphic file (type png)
  <use plots/toy_graph_eta.png>
-Package pdftex.def Info: plots/toy_graph_eta.png used on input line 302.
+Package pdftex.def Info: plots/toy_graph_eta.png used on input line 303.
 (pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- [10] [11 <./plots/toy_graph.png> <./plots/toy_graph_dendogram.png>] [12 <./plots/toy_graph_Q.png> <./plots/toy_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.aux)
+ [10] [11 <./plots/toy_graph.png> <./plots/toy_graph_dendogram.png>] <plots/karate_graph.png, id=61, 433.62pt x 289.08pt>
+File: plots/karate_graph.png Graphic file (type png)
+ <use plots/karate_graph.png>
+Package pdftex.def Info: plots/karate_graph.png used on input line 325.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+ <plots/karate_dendogram.png, id=62, 433.62pt x 289.08pt>
+File: plots/karate_dendogram.png Graphic file (type png)
+ <use plots/karate_dendogram.png>
+Package pdftex.def Info: plots/karate_dendogram.png used on input line 332.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<plots/karate_graph_Q.png, id=63, 433.62pt x 289.08pt>
+File: plots/karate_graph_Q.png Graphic file (type png)
+ <use plots/karate_graph_Q.png>
+Package pdftex.def Info: plots/karate_graph_Q.png used on input line 341.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ <plots/karate_graph_eta.png, id=64, 433.62pt x 289.08pt>
+File: plots/karate_graph_eta.png Graphic file (type png)
+ <use plots/karate_graph_eta.png>
+Package pdftex.def Info: plots/karate_graph_eta.png used on input line 342.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ <plots/karate_graph_partition2.png, id=65, 433.62pt x 289.08pt>
+File: plots/karate_graph_partition2.png Graphic file (type png)
+ <use plots/karate_graph_partition2.png>
+Package pdftex.def Info: plots/karate_graph_partition2.png used on input line 348.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ <plots/karate_graph_partition4.png, id=66, 433.62pt x 289.08pt>
+File: plots/karate_graph_partition4.png Graphic file (type png)
+ <use plots/karate_graph_partition4.png>
+Package pdftex.def Info: plots/karate_graph_partition4.png used on input line 349.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ <plots/football_graph_Q.png, id=67, 433.62pt x 289.08pt>
+File: plots/football_graph_Q.png Graphic file (type png)
+ <use plots/football_graph_Q.png>
+Package pdftex.def Info: plots/football_graph_Q.png used on input line 358.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ <plots/football_graph_eta.png, id=68, 433.62pt x 289.08pt>
+File: plots/football_graph_eta.png Graphic file (type png)
+ <use plots/football_graph_eta.png>
+Package pdftex.def Info: plots/football_graph_eta.png used on input line 359.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.bbl [12 <./plots/toy_graph_Q.png> <./plots/toy_graph_eta.png>] [13 <./plots/karate_graph.png> <./plots/karate_dendogram.png>] [14 <./plots/karate_graph_Q.png> <./plots/karate_graph_eta.png> <./plots/karate_graph_partition2.png> <./plots/karate_graph_partition4.png>]) [15 <./plots/football_graph_Q.png> <./plots/football_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3642 strings out of 493014
- 51269 string characters out of 6133350
- 266433 words of memory out of 5000000
- 7142 multiletter control sequences out of 15000+600000
- 11788 words of font info for 44 fonts, out of 8000000 for 9000
+ 3694 strings out of 493014
+ 52906 string characters out of 6133350
+ 266487 words of memory out of 5000000
+ 7183 multiletter control sequences out of 15000+600000
+ 12135 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,12n,42p,793b,1519s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.pdf" (12 pages, 259242 bytes).
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on "/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.pdf" (15 pages, 429357 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 146 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
