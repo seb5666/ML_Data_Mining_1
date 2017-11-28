@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.11)  28 NOV 2017 17:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.11)  28 NOV 2017 22:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -300,7 +300,7 @@ File: plots/football_graph_eta.png Graphic file (type png)
  <use plots/football_graph_eta.png>
 Package pdftex.def Info: plots/football_graph_eta.png used on input line 359.
 (pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.bbl [12 <./plots/toy_graph_Q.png> <./plots/toy_graph_eta.png>] [13 <./plots/karate_graph.png> <./plots/karate_dendogram.png>] [14 <./plots/karate_graph_Q.png> <./plots/karate_graph_eta.png> <./plots/karate_graph_partition2.png> <./plots/karate_graph_partition4.png>]) [15 <./plots/football_graph_Q.png> <./plots/football_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.aux)
+ [12 <./plots/toy_graph_Q.png> <./plots/toy_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.bbl [13 <./plots/karate_graph.png> <./plots/karate_dendogram.png>] [14 <./plots/karate_graph_Q.png> <./plots/karate_graph_eta.png> <./plots/karate_graph_partition2.png> <./plots/karate_graph_partition4.png>]) [15 <./plots/football_graph_Q.png> <./plots/football_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
