@@ -9,7 +9,7 @@ import copy
 def generate_graph(N = 20, num_clusters = 4, p_in = 0.99, p_out = 0.05):
     A = np.eye(N, dtype=int)
 
-    cluster_assignements = np.repeat(np.arange(num_clusters), int(N/num_clusters))
+    cluster_assignements = np.repeat(np.arange(num_clusters), int(N/num_clusters + 1))
 
     # create random edges
     for i in range(N):
@@ -275,38 +275,121 @@ def rand_index(P1, P2):
             C += len(set.intersection(C1, C2)) ** 2
 
     return ((N**2) * C - A * B) / (1/2 * (N **2) * (A + B) - A * B )
+Ns =[40, 50, 100, 200, 500]
 
-times = []
-for N in [20, 100, 500, 1000]:
-    print(N)
-    num_clusters = 10
-    A, cluster_assignements = generate_graph(N = N, num_clusters = num_clusters, p_in = 0.95, p_out = 0.1)
-#    A, cluster_assignements = generate_example_graph()
-#    N = A.shape[0]
-    cluster_nodes = [list(np.where(cluster_assignements == i)[0]) for i in range(num_clusters)]
+
+for N in Ns:
+    for gamma in [0.3, 0.42, 0.5]:
+        k = int(N ** gamma)
+        for alpha in [2,4,6,7,10]:
+            d_in = alpha * np.log(N /k)
+            p_in = d_in / (N / k)
+            print(N, k, d_in, p_in)
+            for Q in [0.2]:
+                beta = 1 / (Q + k)
+                p_out = beta * d_in
+                A, cluster_assignements = generate_graph(N = N, num_clusters = k, p_in = p_in, p_out = p_out)
+                cluster_nodes = [list(np.where(cluster_assignements == i)[0]) for i in range(k)]
+
+                M = computeM(A, N)
+                print("M: {}".format(M))
+
+                start_time = time.time()
+                build_tree, partitions, Δσs = cluster(A)
+                end_time = time.time() - start_time
+                print("--- %s seconds ---" % (end_time))
+
+                Qs = [modularity(partitions[N-i], M) for i in range(1, 20)]
+                η = increase_ratios(Δσs) + 2
+
+                max_K_Q = np.argmax(Qs[:20]) + 1
+                max_K_η = np.argmax(η[:20]) + 2
+                print("Best k according to Q: {}".format(max_K_Q))
+                R1 = rand_index(partitions[N - max_K_Q], [set(C) for C in cluster_nodes])
+                print("Rand index according to Q: {}".format(R1))
+#                Rs.append(R1)
+exit()
+timess = []
+P_ins = [0.6, 0.5, 0.4]
+for num_clusters in [5]:
+    Rss = []
+    times = []
+    for N in Ns:
+        print()
+        print("N", N)
+        Rs = []
+        for p_in in P_ins:
+            print()
+            expected_degree = p_in * N / num_clusters + np.log(N)
+
+            assert(expected_degree > 1 + p_in * (N / num_clusters - 1))
+            p_out = (expected_degree - 1 - p_in * (N / num_clusters - 1)) / ((N/num_clusters) * (num_clusters -1))
+
+            print("Expected_degree: {}".format(expected_degree))
+            print("(p_in, p_out): ({},{})".format(p_in, p_out))
+            
+            A, cluster_assignements = generate_graph(N = N, num_clusters = num_clusters, p_in = p_in, p_out = p_out)
+            degrees = np.sum(A, axis=1)
+        #    A, cluster_assignements = generate_example_graph()
+        #    N = A.shape[0]
+            cluster_nodes = [list(np.where(cluster_assignements == i)[0]) for i in range(num_clusters)]
+            
+            plt.figure()
+            draw_graph(A, cluster_nodes, num_clusters)
+            plt.title("N = {}, k = {}, p_in = {}".format(N, num_clusters, p_in))
+            
+            M = computeM(A, N)
+            print("M: {}".format(M))
+            
+            start_time = time.time()
+            build_tree, partitions, Δσs = cluster(A)
+            end_time = time.time() - start_time
+            print("--- %s seconds ---" % (end_time))
+            times.append(end_time)
+            
+            Qs = [modularity(partitions[N-i], M) for i in range(1, 20)]
+            η = increase_ratios(Δσs) + 2
+
+            max_K_Q = np.argmax(Qs[:20]) + 1
+            max_K_η = np.argmax(η[:20]) + 2
+            print("Best k according to Q: {}".format(max_K_Q))
+            R1 = rand_index(partitions[N - max_K_Q], [set(C) for C in cluster_nodes])
+            print("Rand index according to Q: {}".format(R1))
+            Rs.append(R1)
+
+#            print("Best k according to η: {}".format(max_K_η))
+#            R2 = rand_index(partitions[N - max_K_η], [set(C) for C in cluster_nodes])
+#            print("Rand index according to η: {}".format(R2))
+
+#            print("Rand index with correct number of clusters: {}".format(rand_index(partitions[N - num_clusters], [set(C) for C in cluster_nodes])))
+
+        Rss.append(Rs)
+            
+    Rss = np.array(Rss)
+    print("Rss", Rss)
     plt.figure()
-    M = computeM(A, N)
-    print("M: {}".format(M))
-    
-    start_time = time.time()
-    build_tree, partitions, Δσs = cluster(A)
-    print("--- %s seconds ---" % (time.time() - start_time))
+    plt.title("Corrected rand_index")
+    for i, p_in in enumerate(P_ins):
+        plt.plot(Ns, Rss[:,i], label="{}".format(p_in))
+    plt.legend()
+    plt.ylim([0,1.1])
+    plt.show()
 
-    Qs = [modularity(partitions[N-i], M) for i in range(1, 20)]
-    η = increase_ratios(Δσs) + 2
+    timess.append(np.sum(times) / len(times))
+    #    if N < 200:
+    #        plt.figure()
+    #        draw_graph(A, cluster_nodes, num_clusters)
+    #        plot_dendogram(build_tree)
+    #        plot_eval(N, Qs, η)
+    #        plt.show()
 
-    max_K_Q = np.argmax(Qs[:20]) + 1
-    max_K_η = np.argmax(η[:20]) + 2
-    print("Best k according to Q: {}".format(max_K_Q))
-    print("Best k according to η: {}".format(max_K_η))
-    print("Rand index: {}".format(rand_index(partitions[N - max_K_Q], [set(C) for C in cluster_nodes])))
-    print("Rand index with correct number of clusters: {}".format(rand_index(partitions[N - num_clusters], [set(C) for C in cluster_nodes])))
-    if N < 200:
-        draw_graph(A, cluster_nodes, num_clusters)
-        plot_dendogram(build_tree)
-        plot_eval(N, Qs, η)
-        plt.show()
-
+plt.figure()
+print(timess)
+plt.loglog(Ns, timess, linestyle='--', marker='o')
+plt.grid(True)
+plt.title('Execution times')
+plt.xlim([1, Ns[-1] * 10])
+plt.show()
 print("Done")
 
 #

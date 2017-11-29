@@ -9,20 +9,22 @@
 \newlabel{eq_theorem3}{{2}{4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.2}Merging the clusters}{4}}
 \newlabel{eq_update_P_t}{{3}{4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.3}Updating the distances}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.3.3}Updating the distances}{5}}
 \newlabel{eq_theorem4}{{4}{5}}
 \newlabel{eq_theorem3}{{5}{5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Evaluating the partitions}{5}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Implementation}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Implementation}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Initialisation of $P^t$}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Initialisation of the clusters}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Hierarchical clustering}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Finding two clusters $C_i$ and $C_j$ to merge}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Merging two clusters $C_i$ and $C_j$}{7}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Hierarchical clustering algorithm}{9}}
+\citation{pons2005computing}
+\citation{pons2005computing}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results \& analysis}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Example graph from the paper}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Simple graph with 16 vertices given in the paper on page 11.}}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Simple graph with 16 vertices given in \cite  {pons2005computing}.}}{11}}
 \newlabel{fig_toy_graph}{{1}{11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Dendogram resulting from runnign my implementation of the clustering algorithm on the simple toy graph. The resulting dendogram matches the one given in the paper.}}{11}}
 \newlabel{fig_toy_graph_dendogram}{{2}{11}}
@@ -33,18 +35,18 @@
 \newlabel{fig_toy_graph_eval}{{3}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Test on randomly generated graph}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Zachary's karate club \cite  {zachary1977information}}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}American college football \cite  {girvan2002community}}{12}}
 \bibdata{bib}
 \bibcite{pons2005computing}{1}
-\bibcite{zachary1977information}{2}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Zachary's karate club network.}}{13}}
 \newlabel{fig_karate_graph}{{4}{13}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Dendogram resulting from using our algorithm on Zachary's karate club network.}}{13}}
 \newlabel{fig_karate_graph_dendogram}{{5}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}American college football \cite  {girvan2002community}}{13}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Modularity and increase ratios for the Karate Club network. The modularity suggests a partition into 4 clusters. The increase ration suggests a partition into 2 clusters, as we can disregard clustering the network into more than 10 clusters.}}{14}}
 \newlabel{fig_karate_eval}{{6}{14}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Partition into 2 and 4 clusters given by our algorithm for the Zachary's karate club network. For the partition into 2 clusters, every node has been assigned the correct cluster, except node 8.}}{14}}
 \newlabel{fig_toy_graph_partitions}{{7}{14}}
+\bibcite{zachary1977information}{2}
 \bibcite{girvan2002community}{3}
 \bibstyle{unsrt}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Modularity and increase ratios for the American College Football network. The modularity is maximised at a partition into 12 clusters, with a value of 0.6. The increase ration suggests a partition into 10 clusters.}}{15}}
