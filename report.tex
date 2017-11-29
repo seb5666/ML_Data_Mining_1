@@ -336,42 +336,49 @@ The next graph I use to test my implementation of the algorithm is the Zachary's
 	\label{fig_karate_graph}
 \end{figure}
 
-As a result of a dispute, the club split into two groups, the members of each group starting their own club. The problem is to recover these two groups using only the information contained in the graph. Running my implementation of the hierarchical graph clustering algorithm on this graph, results with the dendogram given in figure \ref{fig_karate_graph_dendogram}.
-\begin{figure}
+As a result of a dispute, the club split into two groups, the members of each group starting their own club. The problem is to recover these two groups using only the information contained in the graph. 
+
+Running my implementation of the hierarchical graph clustering algorithm on this graph, results with the dendogram given in figure \ref{fig_karate_graph_dendogram}.
+\begin{figure}[h]
 	\includegraphics[scale=0.5]{karate_dendogram}
 	\centering
 	\caption{Dendogram resulting from using our algorithm on Zachary's karate club network.}
 	\label{fig_karate_graph_dendogram}
 \end{figure}
 
-Analysing the partitions using modularity and the increase ratio (figure \ref{fig_karate_eval}), we can see that the algorithm suggests a partition into either 2 or 4 clusters. These partitions are shown in figure \ref{fig_toy_graph_partitions}. For the partition into two clusters every node has been assigned the correct cluster except for node 8.
+Analysing the partitions using modularity (figure \ref{fig_karate_eval}) suggest to divide the graph into 4 clusters. This partition is shown in figure \ref{fig_karate_partition4}. Although the algorithm was not able to recover that the graph should be partitioned into 2 clusters, the 4 clusters conform very closely with the partitioning into 2 clusters given by the club members: the green and yellow clusters together represent one group and the the red and blue clusters together represent the other group with the exception of node 8 which is misclassified. In fact, inspecting the partition into 2 clusters given by the algorithm reveals that all nodes are labelled correctly with the exception of node 8.
+\begin{figure}[h]
+	\includegraphics[scale=0.44]{karate_graph_partition4}
+	\includegraphics[scale=0.44]{karate_graph_partition2}
+	\centering
+	\caption{Partitioning of the Karate Club network into 4 and 2 clusters. The 4 cluster partitioning maximises the modularity and conforms very closely with the partitioning into 2 clusters given by the club members: the green and yellow clusters together represent one group and the the red and blue clusters together represent the other group with the exception of node 8 which is misclassified. The partitioning into 2 clusters is almost perfect, except for node 8.}
+	\label{fig_karate_partition4}
+\end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.44]{karate_graph_Q}
 	\includegraphics[scale=0.44]{karate_graph_eta}
 	\centering
-	\caption{Modularity and increase ratios for the Karate Club network. The modularity suggests a partition into 4 clusters. The increase ration suggests a partition into 2 clusters, as we can disregard clustering the network into more than 10 clusters.}
+	\caption{Modularity and increase ratios for the Karate Club network. The modularity suggests a partition into 4 clusters. The increase ration suggests a partition into 3 clusters, as we can disregard clustering the network into more than 10 clusters.}
 	\label{fig_karate_eval}
-\end{figure}
-\begin{figure}
-	\includegraphics[scale=0.44]{karate_graph_partition2}
-	\includegraphics[scale=0.44]{karate_graph_partition4}
-	\centering
-	\caption{Partition into 2 and 4 clusters given by our algorithm for the Zachary's karate club network. For the partition into 2 clusters, every node has been assigned the correct cluster, except node 8.}
-	\label{fig_toy_graph_partitions}
 \end{figure}
 
 \subsection{American college football \cite{girvan2002community}}
-Next, I test the algorithm on the American College Football network \cite{girvan2002community}. The graph consists of 155 nodes, each node being assigned into one of 12 conferences. The question to ask is whether my implementation of the algorithm can recover this partitioning into the 12 conferences. The modularities and the increase ratios obtained are shown in figure \ref{fig_football_eval}.
-\begin{figure}
+Finally, I test the algorithm on the American College Football network \cite{girvan2002community}. The graph consists of 155 nodes, each node being assigned into one of 12 conferences. Similarly as for the Karate Club network, the problem is to recover the 12 conferences by clustering the nodes of the graph. Running my implementation of the algorithm gives the modularities and the increase ratios shown in figure \ref{fig_football_eval}.
+\begin{figure}[h]
 	\includegraphics[scale=0.44]{football_graph_Q}
 	\includegraphics[scale=0.44]{football_graph_eta}
 	\centering
-	\caption{Modularity and increase ratios for the American College Football network. The modularity is maximised at a partition into 12 clusters, with a value of 0.6. The increase ration suggests a partition into 10 clusters.}
+	\caption{Modularity and increase ratios for the American College Football network. The modularity and increase ratios are both maximised at a partitioning into 12 clusters, which is the correct number of conferences.}
 	\label{fig_football_eval}
 \end{figure}
-The modularity is maximised at a partition into 12 clusters, with a value of 0.6. Indeed, using the generated partition for 12 clusters, the algorithm is able to approximately recover the 12 conferences, with only 10 nodes being misclassified. 
+Both the modularity and the increase ratio are maximised at a partitioning into 12 clusters, with a modularity of 0.6. Indeed, using the generated partition for 12 clusters, the algorithm is able to approximately recover the 12 conferences, with only 10 nodes being misclassified. Another way to compare the partitions is to use the correct Rand index $\mathcal{R'}$, which can be computed using
+\[
+\mathcal{R'}(\mathcal{P}_1,\mathcal{P}_2) = \frac{N^2 \sum_{i,j} |C_i^1 \cap C_j^2|^2 - \sum_i |C_i^1|^2 \sum_j |C_j^2|^2}{\frac{1}{2}N^2\big( \sum_i |C_i^1|^2 + \sum_j |C_j^2|^2\big) - \sum_i |C_i^1|^2 \sum_j |C_j^2|^2}
+\]
+where $C_i^x$ is the i\textsuperscript{th} community of partition $\mathcal{P}_x$.
 
+Comparing the partitioning given by our algorithm with the 12 conferences using the corrected Rand index gives a value of $\mathcal{R'} = 0.906$, which suggests that the algorithm is indeed able to closely recover the 12 conferences.
 \bibliography{bib}
 \bibliographystyle{unsrt}
 

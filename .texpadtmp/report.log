@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.11)  29 NOV 2017 09:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.11)  29 NOV 2017 10:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -268,56 +268,72 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <plots/karate_dendogram.png, id=62, 433.62pt x 289.08pt>
 File: plots/karate_dendogram.png Graphic file (type png)
  <use plots/karate_dendogram.png>
-Package pdftex.def Info: plots/karate_dendogram.png used on input line 341.
+Package pdftex.def Info: plots/karate_dendogram.png used on input line 343.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
- <plots/karate_graph_Q.png, id=63, 433.62pt x 289.08pt>
-File: plots/karate_graph_Q.png Graphic file (type png)
- <use plots/karate_graph_Q.png>
-Package pdftex.def Info: plots/karate_graph_Q.png used on input line 350.
-(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- <plots/karate_graph_eta.png, id=64, 433.62pt x 289.08pt>
-File: plots/karate_graph_eta.png Graphic file (type png)
- <use plots/karate_graph_eta.png>
-Package pdftex.def Info: plots/karate_graph_eta.png used on input line 351.
-(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- <plots/karate_graph_partition2.png, id=65, 433.62pt x 289.08pt>
-File: plots/karate_graph_partition2.png Graphic file (type png)
- <use plots/karate_graph_partition2.png>
-Package pdftex.def Info: plots/karate_graph_partition2.png used on input line 357.
-(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- <plots/karate_graph_partition4.png, id=66, 433.62pt x 289.08pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<plots/karate_graph_partition4.png, id=63, 433.62pt x 289.08pt>
 File: plots/karate_graph_partition4.png Graphic file (type png)
  <use plots/karate_graph_partition4.png>
-Package pdftex.def Info: plots/karate_graph_partition4.png used on input line 358.
+Package pdftex.def Info: plots/karate_graph_partition4.png used on input line 351.
 (pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- <plots/football_graph_Q.png, id=67, 433.62pt x 289.08pt>
+ <plots/karate_graph_partition2.png, id=64, 433.62pt x 289.08pt>
+File: plots/karate_graph_partition2.png Graphic file (type png)
+ <use plots/karate_graph_partition2.png>
+Package pdftex.def Info: plots/karate_graph_partition2.png used on input line 352.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ [12 <./plots/toy_graph_Q.png> <./plots/toy_graph_eta.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<plots/karate_graph_Q.png, id=70, 433.62pt x 289.08pt>
+File: plots/karate_graph_Q.png Graphic file (type png)
+ <use plots/karate_graph_Q.png>
+Package pdftex.def Info: plots/karate_graph_Q.png used on input line 359.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+ <plots/karate_graph_eta.png, id=71, 433.62pt x 289.08pt>
+File: plots/karate_graph_eta.png Graphic file (type png)
+ <use plots/karate_graph_eta.png>
+Package pdftex.def Info: plots/karate_graph_eta.png used on input line 360.
+(pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<plots/football_graph_Q.png, id=72, 433.62pt x 289.08pt>
 File: plots/football_graph_Q.png Graphic file (type png)
  <use plots/football_graph_Q.png>
-Package pdftex.def Info: plots/football_graph_Q.png used on input line 367.
+Package pdftex.def Info: plots/football_graph_Q.png used on input line 369.
 (pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- <plots/football_graph_eta.png, id=68, 433.62pt x 289.08pt>
+ <plots/football_graph_eta.png, id=73, 433.62pt x 289.08pt>
 File: plots/football_graph_eta.png Graphic file (type png)
  <use plots/football_graph_eta.png>
-Package pdftex.def Info: plots/football_graph_eta.png used on input line 368.
+Package pdftex.def Info: plots/football_graph_eta.png used on input line 370.
 (pdftex.def)             Requested size: 190.79338pt x 127.19559pt.
- [12 <./plots/toy_graph_Q.png> <./plots/toy_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.bbl [13 <./plots/karate_graph.png> <./plots/karate_dendogram.png>] [14 <./plots/karate_graph_Q.png> <./plots/karate_graph_eta.png> <./plots/karate_graph_partition2.png> <./plots/karate_graph_partition4.png>]) [15 <./plots/football_graph_Q.png> <./plots/football_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.aux)
+ [13 <./plots/karate_graph.png> <./plots/karate_dendogram.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+(/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.bbl [14 <./plots/karate_graph_partition4.png> <./plots/karate_graph_partition2.png>]) [15 <./plots/karate_graph_Q.png> <./plots/karate_graph_eta.png>] [16 <./plots/football_graph_Q.png> <./plots/football_graph_eta.png>] (/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  3695 strings out of 493014
- 52917 string characters out of 6133350
+ 52914 string characters out of 6133350
  239665 words of memory out of 5000000
  7184 multiletter control sequences out of 15000+600000
  12135 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,12n,42p,852b,1507s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.pdf" (15 pages, 440911 bytes).
+Output written on "/Users/sebastian/Documents/Cambridge/Part 3/Machine Learning and Algorithms for Data Mining/assessement1/.texpadtmp/report.pdf" (16 pages, 450817 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 149 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
